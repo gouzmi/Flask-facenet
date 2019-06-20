@@ -1,3 +1,4 @@
 extra_32x32.mat
 model.pkl
 .vscode/settings.json
+*.h5
