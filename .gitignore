@@ -4,3 +4,5 @@ model.pkl
 *.h5
 *.jpg
 *.rar
+*.PNG
+*.csv
