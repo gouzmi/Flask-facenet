@@ -6,3 +6,5 @@ model.pkl
 *.rar
 *.PNG
 *.csv
+
+*.pickle
