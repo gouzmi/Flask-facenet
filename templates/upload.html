@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="static/upload.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Upload</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    
 </head>
 
 <body>
@@ -26,14 +26,13 @@
         <input type="submit" value="Upload!" id="upload-button">
     </form>
 
-    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<div class="file-upload">
-  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+<div class="file-upload" onload="readURL();">
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Select Image</button>
 
   <div class="image-upload-wrap">
     <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
     <div class="drag-text">
-      <h3>Drag and drop a file or select add Image</h3>
+      <h3>Drag and drop a file</h3>
     </div>
   </div>
   <div class="file-upload-content">
@@ -44,62 +43,6 @@
   </div>
 </div>
     
-
-
 </body>
 
-
-
-<script>
-    $("#file-picker").change(function(){
-        var input = document.getElementById('file-picker');
-        for (var i=0; i<input.files.length; i++)
-        {
-            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
-            if ((ext == 'jpg') || (ext == 'png') || (ext=='jpeg'))
-            {
-                $("#msg").text("Files supported")
-            }
-            else
-            {
-                $("#msg").text("Files NOT supported")
-                document.getElementById("file-picker").value ="";
-            }
-        }
-    } );
-
-    function readURL(input) {
-  if (input.files && input.files[0]) {
-
-    var reader = new FileReader();
-
-    reader.onload = function(e) {
-      $('.image-upload-wrap').hide();
-
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
-
-      $('.image-title').html(input.files[0].name);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-
-  } else {
-    removeUpload();
-  }
-}
-
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
-}
-$('.image-upload-wrap').bind('dragover', function () {
-		$('.image-upload-wrap').addClass('image-dropping');
-	});
-	$('.image-upload-wrap').bind('dragleave', function () {
-		$('.image-upload-wrap').removeClass('image-dropping');
-});
-
-</script>
 </html>
