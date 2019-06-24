@@ -21,9 +21,13 @@ body {
 .file-upload {
   box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.5);
   background-color: #ffffff;
-  width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100vh;
+  height: 60vh;
+  margin-top:10vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 55px;
+  
 }
 
 .file-upload-btn {
@@ -34,16 +38,16 @@ body {
   border: none;
   padding: 10px;
   border-radius: 4px;
-  border-bottom: 4px solid #0073ae;
+  border-bottom: 4px solid #005f8f;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
   font-weight: 700;
-  box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.5);
+  /*box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.5);*/
 }
 
 .file-upload-btn:hover {
-  background: #005f8f;
+  background: #00679b;
   border-bottom: 4px solid #005f8f;
   transition: all .2s ease;
   cursor: pointer;
@@ -72,10 +76,11 @@ body {
 }
 
 .image-upload-wrap {
-  margin-top: 20px;
-  border: 4px dashed #0073ae;
+  margin-top: 4vh;
+  border: 3.5px dashed #0073ae;
   color: #0073ae;
   position: relative;
+  height: 37vh;
 }
 
 
@@ -96,9 +101,9 @@ body {
 }
 
 .drag-text h3 {
-  font-weight: 100;
+  font-weight: 200;
   text-transform: uppercase;
-  padding: 60px 0;
+  padding: 15vh;
 }
 .drag-text h3:hover {
   color: #ffffff;
@@ -116,19 +121,20 @@ body {
   width: 200px;
   margin: 0;
   color: #fff;
-  background: #cd4535;
+  background: #1FB264;
   border: none;
   padding: 10px;
   border-radius: 4px;
-  border-bottom: 4px solid #b02818;
+  border-bottom: 4px solid rgb(25, 150, 87);
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
   font-weight: 700;
+  /*box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.5);*/
 }
 
 .remove-image:hover {
-  background: #c13b2a;
+  background: rgb(25, 150, 87);
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;
