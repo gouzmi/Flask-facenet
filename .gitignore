@@ -5,3 +5,5 @@ model.pkl
 *.rar
 *.csv
 *.pickle
+img_align_celeba/*
+
