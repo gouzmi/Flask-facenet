@@ -1,0 +1,19 @@
+body {
+    background-image: url(images/background_blanc.png);  }
+  
+  
+  .header{
+    margin-top: 15px;
+  }
+  img{
+    max-width: 100%;
+  }
+  
+  #upload-form{
+    color : #0073ae;
+  }
+  
+  body {
+    font-family: sans-serif;
+    background-color: #eeeeee;
+  }
