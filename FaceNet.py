@@ -9,6 +9,11 @@ from imageio import imread
 from skimage.transform import resize
 from scipy.spatial import distance
 from keras.models import load_model
+from matplotlib import pyplot as plt
+import pickle
+import pandas as pd
+from tqdm import tqdm
+from sklearn.metrics.pairwise import euclidean_distances
 
 cascade_path = '../model/cv2/haarcascade_frontalface_alt2.xml'
 
@@ -32,39 +37,39 @@ def l2_normalize(x, axis=-1, epsilon=1e-10):
     output = x / np.sqrt(np.maximum(np.sum(np.square(x), axis=axis, keepdims=True), epsilon))
     return output
 
-def load_and_align_images(filepaths, margin):
-    cascade = cv2.CascadeClassifier(cascade_path)
-    
-    aligned_images = []
-    for filepath in filepaths:
-        img = imread(filepath)
+images_error = []
 
-        faces = cascade.detectMultiScale(img,
-                                         scaleFactor=1.1,
-                                         minNeighbors=3)
-        (x, y, w, h) = faces[0]
-        cropped = img[y-margin//2:y+h+margin//2,
-                      x-margin//2:x+w+margin//2, :]
-        aligned = resize(cropped, (image_size, image_size), mode='reflect')
-        aligned_images.append(aligned)
-            
+def scale(img_path,margin=10):
+    aligned_images=[]
+    cascade = cv2.CascadeClassifier(cascade_path)
+    img = imread(img_path)
+    faces = cascade.detectMultiScale(img,
+                                     scaleFactor=1.1,
+                                      minNeighbors=3)
+    (x, y, w, h) = faces[0]
+    cropped = img[y-margin//2:y+h+margin//2,
+                    x-margin//2:x+w+margin//2, :]
+    aligned = resize(cropped, (image_size, image_size), mode='reflect')
+    aligned_images.append(aligned)
     return np.array(aligned_images)
 
-def calc_embs(filepaths, margin=10, batch_size=1):
-    aligned_images = prewhiten(load_and_align_images(filepaths, margin))
-    pd = []
-    for start in range(0, len(aligned_images), batch_size):
-        pd.append(model.predict_on_batch(aligned_images[start:start+batch_size]))
-    embs = l2_normalize(np.concatenate(pd))
 
-    return embs
+def facenet(img_path, margin=10):
+    try:
+        aligned_images = prewhiten(scale(img_path,margin))
+        #embs = model.predict(aligned_images)
+        if aligned_images.shape[-1]==4:
+            aligned_images=aligned_images[:,:,:,:-1]
+        embs = model.predict(aligned_images)
+        embs = l2_normalize(embs)
+        return embs
+    except:
+        images_error.append(img_path)
+        #print(img_path,' : visage non détecté')
 
-def calc_dist(img_name0, img_name1):
-    return distance.euclidean(data[img_name0]['emb'], data[img_name1]['emb'])
-
-def calc_dist_plot(img_name0, img_name1):
-    print(calc_dist(img_name0, img_name1))
-    plt.subplot(1, 2, 1)
-    plt.imshow(imread(data[img_name0]['image_filepath']))
-    plt.subplot(1, 2, 2)
-    plt.imshow(imread(data[img_name1]['image_filepath']))
+values = pd.read_csv('features.csv')
+photo = '../data/images/dimsa.PNG'
+image_size = 160
+aligned_images = prewhiten(scale(photo))
+values['result']=euclidean_distances(values.iloc[:,1:],facenet(photo))
+# values.sort_values(by='result')

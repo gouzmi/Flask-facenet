@@ -10,6 +10,7 @@ import os
 from keras.applications import VGG16
 from keras.preprocessing import image
 from keras.models import Sequential
+from keras.models import load_model
 from keras.applications.vgg16 import preprocess_input, decode_predictions
 import pandas as pd
 import tensorflow as tf
@@ -53,6 +54,8 @@ def upload():
 
 if __name__ == '__main__':	
 	# load ml model
-
+    model_path = '../facenet_keras.h5'
+    model = load_model(model_path)
+    model.load_weights('../facenet_keras_weights.h5')
 	# start api
-	app.run(debug=True)
+    app.run(debug=True)
