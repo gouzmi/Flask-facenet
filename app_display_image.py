@@ -40,22 +40,18 @@ def upload():
         print ("Save it to:", destination)
         upload.save(destination)
 
-    # return send_from_directory("images", filename, as_attachment=True)
     return render_template("display.html", image_name=filename)
+    #return send_from_directory("static", filename)
+
+    
+#     return send_from_directory("static", filename)
+
+#     #Faire les tranfos images
 
 
+#     #Aller chercher dans le csv les images correspondantes
 
-@app.route('/upload/<filename>')
-def send_image(filename):
-
-    #Faire les tranfos images
-
-
-
-    #Aller chercher dans le csv les images correspondantes
-
-    #Return la liste
-	return send_from_directory("static", filename)
+#     #Return la liste
 
 if __name__ == '__main__':	
 	# load ml model
