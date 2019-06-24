@@ -110,16 +110,16 @@ body {
 }
 
 .file-upload-image {
-  max-height: 200px;
-  max-width: 200px;
-  margin: auto;
+  max-height: 250px;
+  max-width: 300px;
+  margin-top: 2vh;
   padding: 20px;
   color: #ffffff;
 }
 
 .remove-image {
   width: 200px;
-  margin: 0;
+  margin-top: 2vh;
   color: #fff;
   background: #1FB264;
   border: none;
@@ -144,3 +144,26 @@ body {
   border: 0;
   transition: all .2s ease;
 }
+
+
+.fileuploaded{
+  position: absolute;
+  max-height: 250px;
+  max-width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
