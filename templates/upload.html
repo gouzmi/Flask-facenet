@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Upload</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     
 </head>
 
 <body>
-<div class='container-fluid row'>
-        <div id ='atoslogo' class='col-sm-2'>  </div>
-        <div class='col-sm-8'> eee </div>
-        <div id='gendarmerie' class ='col-sm-2'>  </div>
-</div>
 
-<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-    <strong>Files:</strong><br>
-    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-    <div id="msg"></div>
-    <input type="submit" value="Upload!" id="upload-button">
-</form>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-sm-2" id="atoslogo">
+                <img src="/static/images/atos_logo.png">
+            </div>
+            <div class="col-sm-10"></div>
+        </div>
+    </div>
+
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <strong>Files:</strong><br>
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <div id="msg"></div>
+        <input type="submit" value="Upload!" id="upload-button">
+    </form>
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<div class="file-upload">
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>Drag and drop a file or select add Image</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+</div>
+    
+
+
 </body>
+
+
+
 <script>
     $("#file-picker").change(function(){
         var input = document.getElementById('file-picker');
@@ -39,5 +67,39 @@
             }
         }
     } );
+
+    function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
+});
+
 </script>
 </html>
