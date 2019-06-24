@@ -26,21 +26,14 @@ reader.onload = function(e) {
   $('.file-upload-image').attr('src', e.target.result);
   $('.file-upload-content').show();
 
-  $('.image-title').html(input.files[0].name);
+//   $('.image-title').html(input.files[0].name);
 };
 
 reader.readAsDataURL(input.files[0]);
 
-} else {
-removeUpload();
 }
 }
 
-function removeUpload() {
-$('.file-upload-input').replaceWith($('.file-upload-input').clone());
-$('.file-upload-content').hide();
-$('.image-upload-wrap').show();
-}
 $('.image-upload-wrap').bind('dragover', function () {
     $('.image-upload-wrap').addClass('image-dropping');
 });
