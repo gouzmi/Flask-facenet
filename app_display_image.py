@@ -43,11 +43,9 @@ def upload():
     return render_template("display.html", image_name=filename)
     #return send_from_directory("static", filename)
 
-    
 #     return send_from_directory("static", filename)
 
 #     #Faire les tranfos images
-
 
 #     #Aller chercher dans le csv les images correspondantes
 
