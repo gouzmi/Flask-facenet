@@ -54,8 +54,8 @@ def upload():
 
 if __name__ == '__main__':	
 	# load ml model
-    model_path = '../facenet_keras.h5'
+    model_path = 'facenet_keras.h5'
     model = load_model(model_path)
-    model.load_weights('../facenet_keras_weights.h5')
+    model.load_weights('facenet_keras_weights.h5')
 	# start api
     app.run(debug=True)
