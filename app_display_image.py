@@ -18,6 +18,13 @@ import FaceNet as fn
 
 app = Flask(__name__)
 
+global graph
+model_path = 'facenet_keras.h5'
+modele = load_model(model_path)
+modele.load_weights('facenet_keras_weights.h5')
+graph = tf.get_default_graph()
+
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route("/")
@@ -37,14 +44,16 @@ def upload():
         print(upload)
         print("{} is the file name".format(upload.filename))
         filename = upload.filename
-        destination = "/".join([target, filename])
+        destination = ''.join([target, filename])
         print ("Accept incoming file:", filename)
         print ("Save it to:", destination)
         upload.save(destination)
         #faire le bail
         values = pd.read_csv('notebook/features.csv')
         photo = destination
-        values['result']=fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo))
+        print(modele.summary())
+        
+        values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
         imgs = (values.sort_values(by='result').iloc[:5,0]).tolist()
         print('--------------')
         print(imgs)
@@ -54,8 +63,6 @@ def upload():
 
 if __name__ == '__main__':	
 	# load ml model
-    model_path = 'facenet_keras.h5'
-    model = load_model(model_path)
-    model.load_weights('facenet_keras_weights.h5')
+    
 	# start api
     app.run(debug=True)

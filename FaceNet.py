@@ -8,7 +8,6 @@ from mpl_toolkits.mplot3d import proj3d
 from imageio import imread
 from skimage.transform import resize
 from scipy.spatial import distance
-from keras.models import load_model
 from matplotlib import pyplot as plt
 import pickle
 import pandas as pd
@@ -16,7 +15,7 @@ from tqdm import tqdm
 from sklearn.metrics.pairwise import euclidean_distances
 
 cascade_path = 'model/cv2/haarcascade_frontalface_alt2.xml'
-image_size = 160
+
 
 def prewhiten(x):
     if x.ndim == 4:
@@ -41,6 +40,7 @@ def l2_normalize(x, axis=-1, epsilon=1e-10):
 images_error = []
 
 def scale(img_path,margin=10):
+    image_size = 160
     aligned_images=[]
     cascade = cv2.CascadeClassifier(cascade_path)
     img = imread(img_path)
@@ -55,18 +55,23 @@ def scale(img_path,margin=10):
     return np.array(aligned_images)
 
 
-def facenet(img_path, margin=10):
-    try:
+
+def facenet(img_path, model, margin,graph):
+    
+    # try:
         aligned_images = prewhiten(scale(img_path,margin))
         #embs = model.predict(aligned_images)
+        print('------------')
+        print(aligned_images.shape)
         if aligned_images.shape[-1]==4:
             aligned_images=aligned_images[:,:,:,:-1]
-        embs = model.predict(aligned_images)
+        with graph.as_default():
+            embs = model.predict(aligned_images)
         embs = l2_normalize(embs)
         return embs
-    except:
-        images_error.append(img_path)
-        #print(img_path,' : visage non détecté')
+    # except:
+    #     images_error.append(img_path)
+    #     print(img_path,' : visage non détecté')
 
 
 # values = pd.read_csv('notebook/features.csv')
