@@ -120,6 +120,7 @@ body {
 .remove-image {
   width: 200px;
   margin-top: 2vh;
+  margin-bottom: 2vh;
   color: #fff;
   background: #1FB264;
   border: none;
