@@ -11,9 +11,11 @@
 
 
 <img class=fileuploaded  src="static/{{image_name}}">
-
-
 Ressemblances:
-
+<ol> 
+{%for i in range(0, len)%} 
+    <li>{{imgs[i]}}</li> 
+{%endfor%} 
+</ol> 
 </body>
 </html>

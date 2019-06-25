@@ -57,7 +57,7 @@ def upload():
         # print('--------------')
         # print(imgs)
 
-    return render_template("display.html", image_name=filename)
+    return render_template("display.html", image_name=filename, imgs = imgs, len = len(imgs))
     #return send_from_directory("static", filename)
 
 if __name__ == '__main__':	
