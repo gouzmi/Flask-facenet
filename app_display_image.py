@@ -51,12 +51,11 @@ def upload():
         #faire le bail
         values = pd.read_csv('notebook/features.csv')
         photo = destination
-        print(modele.summary())
         
         values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
         imgs = (values.sort_values(by='result').iloc[:5,0]).tolist()
-        print('--------------')
-        print(imgs)
+        # print('--------------')
+        # print(imgs)
 
     return render_template("display.html", image_name=filename)
     #return send_from_directory("static", filename)

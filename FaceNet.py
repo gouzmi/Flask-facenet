@@ -58,7 +58,7 @@ def scale(img_path,margin=10):
 
 def facenet(img_path, model, margin,graph):
     
-    # try:
+    try:
         aligned_images = prewhiten(scale(img_path,margin))
         #embs = model.predict(aligned_images)
         print('------------')
@@ -69,13 +69,7 @@ def facenet(img_path, model, margin,graph):
             embs = model.predict(aligned_images)
         embs = l2_normalize(embs)
         return embs
-    # except:
-    #     images_error.append(img_path)
-    #     print(img_path,' : visage non détecté')
+    except:
+        images_error.append(img_path)
+        print(img_path,' : visage non détecté')
 
-
-# values = pd.read_csv('notebook/features.csv')
-# photo = '../data/images/dimsa.PNG'
-# aligned_images = prewhiten(scale(photo))
-# values['result']=euclidean_distances(values.iloc[:,1:],facenet(photo))
-# # imread(values.sort_values(by='result').iloc[0,0])
