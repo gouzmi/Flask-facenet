@@ -15,7 +15,8 @@ import pandas as pd
 from tqdm import tqdm
 from sklearn.metrics.pairwise import euclidean_distances
 
-cascade_path = '../model/cv2/haarcascade_frontalface_alt2.xml'
+cascade_path = 'model/cv2/haarcascade_frontalface_alt2.xml'
+image_size = 160
 
 def prewhiten(x):
     if x.ndim == 4:
@@ -67,9 +68,9 @@ def facenet(img_path, margin=10):
         images_error.append(img_path)
         #print(img_path,' : visage non détecté')
 
-values = pd.read_csv('features.csv')
-photo = '../data/images/dimsa.PNG'
-image_size = 160
-aligned_images = prewhiten(scale(photo))
-values['result']=euclidean_distances(values.iloc[:,1:],facenet(photo))
-# values.sort_values(by='result')
+
+# values = pd.read_csv('notebook/features.csv')
+# photo = '../data/images/dimsa.PNG'
+# aligned_images = prewhiten(scale(photo))
+# values['result']=euclidean_distances(values.iloc[:,1:],facenet(photo))
+# # imread(values.sort_values(by='result').iloc[0,0])

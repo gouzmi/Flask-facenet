@@ -14,6 +14,7 @@ from keras.models import load_model
 from keras.applications.vgg16 import preprocess_input, decode_predictions
 import pandas as pd
 import tensorflow as tf
+import FaceNet as fn
 
 app = Flask(__name__)
 
@@ -40,17 +41,16 @@ def upload():
         print ("Accept incoming file:", filename)
         print ("Save it to:", destination)
         upload.save(destination)
+        #faire le bail
+        values = pd.read_csv('notebook/features.csv')
+        photo = destination
+        values['result']=fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo))
+        imgs = (values.sort_values(by='result').iloc[:5,0]).tolist()
+        print('--------------')
+        print(imgs)
 
     return render_template("display.html", image_name=filename)
     #return send_from_directory("static", filename)
-
-#     return send_from_directory("static", filename)
-
-#     #Faire les tranfos images
-
-#     #Aller chercher dans le csv les images correspondantes
-
-#     #Return la liste
 
 if __name__ == '__main__':	
 	# load ml model
