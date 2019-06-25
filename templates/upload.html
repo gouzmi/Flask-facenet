@@ -31,13 +31,20 @@
     </div>
   </div>
   <div class="file-upload-content">
-    <img class="file-upload-image" src="#" alt="your image" />
+    <img class="file-upload-image" src="#" alt="your image" id=content/>
     <div class="image-title-wrap">
       <input type="submit" class="remove-image" value="Upload" id="upload-button"></input>
     </div>
   </div>
 </form>
-    
+
+<script type="text/javascript">// <![CDATA[
+  function loading(){
+      $("#loading").show();
+      $("#content").hide();       
+  }
+// ]]></script>
+
 </body>
 
 </html>

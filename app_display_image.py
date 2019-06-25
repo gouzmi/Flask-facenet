@@ -53,7 +53,7 @@ def upload():
         photo = destination
         
         values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
-        imgs = (values.sort_values(by='result').iloc[:5,0]).tolist()
+        imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
         # print('--------------')
         # print(imgs)
 
