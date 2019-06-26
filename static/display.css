@@ -1,19 +1,44 @@
-body {
-    background-image: url(images/background_blanc.png);  }
-  
-  
-  .header{
-    margin-top: 15px;
-  }
-  img{
-    max-width: 100%;
-  }
-  
-  #upload-form{
-    color : #0073ae;
-  }
-  
-  body {
-    font-family: sans-serif;
-    background-color: #eeeeee;
-  }
+#center{
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#center .block{
+  display: flex;
+  justify-content: space-around;
+  padding: 0% 5% 0% 5%;
+}
+
+#center :nth-child() { 
+}
+
+#center :nth-child(2) {
+  /* margin-bottom: 3vh; */
+}
+
+
+#img-compared, .ressemblances{
+  height: 30vh;
+}
+
+.corps{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.conteneur{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.conteneur div{
+  display: flex;
+  padding: 3px;
+  justify-content: center;
+  align-content: center;
+}
