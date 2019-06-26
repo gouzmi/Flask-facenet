@@ -11,6 +11,8 @@
 
 <body>
 
+
+
   <div class="container-fluid header">
     <div class="row">
         <div class="col-sm-2" id="atoslogo">
@@ -19,7 +21,7 @@
         <div class="col-sm-10"></div>
     </div>
   </div>
-
+  
   <div class="text-center">
       <img src="static/images/loadingimage.svg" id="loadingimg" style="  margin-top: 12vh;
       display: none; height:380px; width: 380px" class="img-fluid" alt="" >
@@ -35,13 +37,17 @@
     <div class="drag-text">
       <h3>Drag and drop a file</h3>
     </div>
+    <p class="text-center" style="color:red">{{msg}}</p>
   </div>
+ 
   <div class="file-upload-content">
     <img class="file-upload-image" src="#" alt="your image" id=content/>
     <div class="image-title-wrap">
       <input type="submit" class="remove-image" value="Upload" id="upload-button" onclick="loading();"></input>
     </div>
+    
   </div>
+  
 </form>
 
 <script type="text/javascript">
