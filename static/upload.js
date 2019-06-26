@@ -40,3 +40,19 @@ $('.image-upload-wrap').bind('dragover', function () {
 $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
+
+function updateScore(){
+    console.log('je me lance')
+    var list = document.getElementsByClassName('score');
+    for (var i = 0; i < list.length; i++) {
+        if(list[i].textContent<0.4){
+            list[i].style.backgroundColor = '#199657';
+        }
+        else if(list[i].textContent<1){
+            list[i].style.backgroundColor = '#FFEB3B';
+        }
+        else{
+            list[i].style.backgroundColor = "#E64A19";
+        }
+    }
+}

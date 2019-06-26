@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='display.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="static/upload.js"></script>
     <meta charset="UTF-8">
     <title>Facenet Atos</title>
 </head>
-<body class="corps">
+<body class="corps" onload="updateScore();">
     <div class="container-fluid header">
         <div class="row">
             <div class="col-sm-2" id="atoslogo">
@@ -22,14 +23,15 @@
         <div class="block">
             <div class="conteneur">
                 <img id="img-compared"  src="static/{{image_name}}">
-                <div>Cinque Terre</div>
             </div>
         </div>
         <div class="block">
             {%for i in range(0, len)%}
                 <div class="conteneur">
                     <img class="ressemblances"  src="static/img_align_celeba/{{imgs[i]}}">
-                    <div>Cinque Terre</div>
+                    {% if scores %}
+                        <div class="score" style="text-align: center">{{ scores[i] }}</div>
+                    {% endif %}
                 </div>
             {%endfor%}  
         </div>
