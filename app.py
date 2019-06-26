@@ -55,11 +55,12 @@ def upload():
         try:
             values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
             imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
-            
+            scores = (values.sort_values(by='result').iloc[:3,-1]).tolist()
+            scores = [ round(elem, 3) for elem in scores ]
         except:
             msg="Aucun visage n'a été trouvé"
             return render_template("upload.html",msg=msg)
-    return render_template("display.html", image_name=filename, imgs = imgs, len = len(imgs))
+    return render_template("display.html", image_name=filename, imgs = imgs, len = len(imgs),scores = scores)
     #return send_from_directory("static", filename)
 
 if __name__ == '__main__':	

@@ -45,8 +45,8 @@ function updateScore(){
     console.log('je me lance')
     var list = document.getElementsByClassName('score');
     for (var i = 0; i < list.length; i++) {
-        if(list[i].textContent<0.4){
-            list[i].style.backgroundColor = '#199657';
+        if(list[i].textContent<0.5){
+            list[i].style.backgroundColor = '#7CB342';
         }
         else if(list[i].textContent<1){
             list[i].style.backgroundColor = '#FFEB3B';
