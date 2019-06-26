@@ -31,7 +31,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     return render_template("upload.html")
 
-@app.route("/upload", methods=["POST"])
+@app.route("/upload", methods=['POST'])
 def upload():
     target = os.path.join(APP_ROOT, 'static/')
     print(target)
@@ -49,20 +49,21 @@ def upload():
         print ("Save it to:", destination)
         upload.save(destination)
         #faire le bail
-        values = pd.read_csv('notebook/features.csv')
+        values = pd.read_csv('features.csv')
         photo = destination
         
         try:
             values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
             imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
-        except MemoryError as error:
-            return render_template("upload.html")
-
+            
+        except:
+            msg="Aucun visage n'a été trouvé"
+            return render_template("upload.html",msg=msg)
     return render_template("display.html", image_name=filename, imgs = imgs, len = len(imgs))
     #return send_from_directory("static", filename)
 
 if __name__ == '__main__':	
 	# load ml model
     
-	# start api
+	# start api http://127.0.0.1:5000/
     app.run(debug=True)
