@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="https://atos.net/wp-content/themes/atos/images/favicons/favicon-196x196.png" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Facenet Atos</title>
+</head>
+<body>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-sm-2" id="atoslogo">
+                <img src="/static/images/atos_logo.png">
+            </div>
+            <div class="col-sm-10"></div>
+        </div>
+    </div>
+
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="file-upload" onload="readURL();">
+        <p class="text-center" style="  color: #ae0000;font: bold;
+        font-size:30px;">Aucun visage n'a été detecté</p>
+    </form>
+
+</body>
+</html>

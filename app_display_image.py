@@ -52,10 +52,11 @@ def upload():
         values = pd.read_csv('notebook/features.csv')
         photo = destination
         
-        values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
-        imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
-        # print('--------------')
-        # print(imgs)
+        try:
+            values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
+            imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
+        except MemoryError as error:
+            return render_template("upload.html")
 
     return render_template("display.html", image_name=filename, imgs = imgs, len = len(imgs))
     #return send_from_directory("static", filename)

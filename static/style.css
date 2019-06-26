@@ -9,10 +9,6 @@ body {
   height: 10vh;
 }
 
-.center{
-  height: 90vh;
-}
-
 img{
   max-width: 100%;
 }
@@ -72,8 +68,6 @@ body {
 
 .file-upload-input {
   position: absolute;
-  margin-top: 3vh;
-  margin-bottom: 0vh;
   padding: 0;
   width: 100%;
   height: 200px;
@@ -81,6 +75,10 @@ body {
   opacity: 0;
   cursor: pointer;
   color: #ffffff;
+
+  margin-top: 4vh;
+  margin-bottom: 2vh;
+  height: 50vh;
 }
 
 .image-upload-wrap {
@@ -95,7 +93,7 @@ body {
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-image: radial-gradient(circle at center, #0073ae,#005f8f);
+  background-image: radial-gradient(circle at center, #0088cc,#005f8f);
   border: 4px dashed #ffffff;
   color: #ffffff;
 }
@@ -161,19 +159,3 @@ body {
   max-height: 250px;
   max-width: 300px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

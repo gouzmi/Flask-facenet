@@ -11,15 +11,21 @@
 
 <body>
 
-    <div class="container-fluid header">
-        <div class="row">
-            <div class="col-sm-2" id="atoslogo">
-                <img src="/static/images/atos_logo.png">
-            </div>
-            <div class="col-sm-10"></div>
+  <div class="container-fluid header">
+    <div class="row">
+        <div class="col-sm-2" id="atoslogo">
+            <img src="/static/images/atos_logo.png">
         </div>
+        <div class="col-sm-10"></div>
     </div>
+  </div>
 
+  <div class="text-center">
+      <img src="static/images/loadingimage.svg" id="loadingimg" style="  margin-top: 12vh;
+      display: none; height:380px; width: 380px" class="img-fluid" alt="" >
+      <p id=loadingimgtext style="  color: #0073ae;font: bold;
+      display: none;font-size:26px;">Analyse du visage en cours...</p>
+  </div>
 
 <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="file-upload" onload="readURL();">
   <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Select Image</button>
@@ -33,17 +39,20 @@
   <div class="file-upload-content">
     <img class="file-upload-image" src="#" alt="your image" id=content/>
     <div class="image-title-wrap">
-      <input type="submit" class="remove-image" value="Upload" id="upload-button"></input>
+      <input type="submit" class="remove-image" value="Upload" id="upload-button" onclick="loading();"></input>
     </div>
   </div>
 </form>
 
-<script type="text/javascript">// <![CDATA[
+<script type="text/javascript">
   function loading(){
-      $("#loading").show();
-      $("#content").hide();       
+      $("#loadingimg").show();
+      $("#loadingimgtext" ).show();
+      $("#upload-form" ).hide();        
   }
-// ]]></script>
+</script>
+
+
 
 </body>
 
