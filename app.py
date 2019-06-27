@@ -54,8 +54,8 @@ def upload():
         
         try:
             values['result'] = fn.euclidean_distances(values.iloc[:,1:],fn.facenet(photo,modele,10,graph))
-            imgs = (values.sort_values(by='result').iloc[:3,0]).tolist()
-            scores = (values.sort_values(by='result').iloc[:3,-1]).tolist()
+            imgs = (values.sort_values(by='result').iloc[:5,0]).tolist()
+            scores = (values.sort_values(by='result').iloc[:5,-1]).tolist()
             scores = [ round(elem, 3) for elem in scores ]
         except:
             msg="Aucun visage n'a été trouvé"
