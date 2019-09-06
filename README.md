@@ -1,13 +1,15 @@
 # Flask-facenet
-Les dépendances sont dans requirements.txt
 
-Il faut ajouter les fichiers suivants dans le root folder : 
-facenet_keras_weights.h5
-facenet_keras.h5
-features.csv
+Dependencies are in requirements.txt
 
-Les images des célébrités sont à placer dans le dossier static/img_align_celeba/*photos ici*
+You will have to add those files in the root folder : 
 
-Lancer le script app.py
+- facenet_keras_weights.h5 (download here https://github.com/nyoki-mtl/keras-facenet)
+- facenet_keras.h5 (download here https://github.com/nyoki-mtl/keras-facenet)
+- features.csv you have do run facenet on your database of images (here we have taken a part of CelebA --> https://www.kaggle.com/jessicali9530/celeba-dataset)
 
-L'url du site apparait dans la console une fois chargé:  http://127.0.0.1:5000/
+You have to put your images in the folder : static/img_align_celeba/*here*
+
+Launch app.py
+
+Have fun:  http://127.0.0.1:5000/
