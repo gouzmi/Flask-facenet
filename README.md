@@ -15,3 +15,7 @@ You have to put your images in the folder : static/img_align_celeba/*here*
 Launch app.py
 
 Have fun:  http://127.0.0.1:5000/
+
+![Alt text](image1.png?raw=true "demo")
+
+![Alt text](image2.png?raw=true "demo")
