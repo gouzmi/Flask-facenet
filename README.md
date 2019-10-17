@@ -16,6 +16,6 @@ Launch app.py
 
 Have fun:  http://127.0.0.1:5000/
 
-![Alt text](image1.png?raw=true "demo")
+![Image1](Image1.png)
 
-![Alt text](image2.png?raw=true "demo")
+![Image2](Image2.png)
