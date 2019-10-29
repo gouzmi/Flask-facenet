@@ -16,7 +16,7 @@ opencv-python==4.1.0.25
 openscoring==0.5.0
 panda==0.3.1
 pandas==0.24.1
-Pillow==5.4.1
+Pillow==6.2.0
 python-dateutil==2.8.0
 pytz==2018.9
 PyYAML==5.1.1
