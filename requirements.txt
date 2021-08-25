@@ -1,5 +1,5 @@
 ﻿certifi==2019.3.9
-tensorflow==1.12.2
+tensorflow==2.5.1
 chardet==3.0.4
 Click==7.0
 Flask==1.0.3
