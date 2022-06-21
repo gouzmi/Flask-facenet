@@ -11,7 +11,7 @@ Keras==2.2.4
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 MarkupSafe==1.1.1
-numpy==1.16.1
+numpy==1.22.0
 opencv-python==4.1.0.25
 openscoring==0.5.0
 panda==0.3.1
